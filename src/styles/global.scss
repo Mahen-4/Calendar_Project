@@ -1,11 +1,54 @@
+//TEXT FIELD IMPORTS 
+@use "@material/floating-label/mdc-floating-label";
+@use "@material/line-ripple/mdc-line-ripple";
+@use "@material/notched-outline/mdc-notched-outline";
+@use "@material/textfield";
+@include textfield.core-styles;
+
+//COMPONENTS STYLES IMPORTS
 @import "./variables";
 @import "./calendarStyle";
+@import "./timeLineStyle";
+@import "./addButtonStyle";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Varela+Round&display=swap');
+
+// SCHEDULER IMPORTS
+@import "../../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-calendars/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-dropdowns/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-lists/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-navigations/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-popups/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-react-schedule/styles/material.css";
+
+
+
 
 
 body{
     background-color: white;
     color: black;
     margin: 0;
+    margin-left: 5%;
     font-family: 'Roboto', sans-serif;
+    overflow-y: hidden;
+    .container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 5%;
+        .header{
+            padding: 0 10px;
+            align-items: center;
+            height: 10vh;
+            width: 63%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
 }

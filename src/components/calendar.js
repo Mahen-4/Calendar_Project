@@ -1,6 +1,7 @@
 import React from 'react'
 import Calendar from 'react-calendar'
 import TimeLine from './timeLine'
+import Header from './header/header'
 
 export default function CalendarComponent()  {
 
@@ -13,7 +14,8 @@ export default function CalendarComponent()  {
     
 
     return(
-        <div>
+        <div className='container'>
+            <Header />
             <TimeLine selectedDay={date}/>
             <Calendar 
             onChange={onDateChange} 

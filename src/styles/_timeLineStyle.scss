@@ -1,0 +1,23 @@
+.e-appointment{
+    background-color: transparent !important;
+
+    .e-appointment-details{
+        height: 100%;
+        div{
+            height: 100%;
+            .eventTemplate{
+                color: black;
+                background-color: rgba(255, 0, 0, 0.364);
+                margin-left: 0.5%;
+                padding-left: 5%;
+                width: 100%;
+                font-size: 20px;
+                display: flex;
+                justify-content: left;
+                align-items: center;
+            }
+        }
+        
+    }
+    
+}

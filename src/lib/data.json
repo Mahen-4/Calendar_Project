@@ -1,0 +1,23 @@
+[
+    {
+        "Id": 1,
+        "Subject": "Video games",
+        "StartTime": "Tue Nov 07 2023 12:11:49 GMT+0100 (Central European Standard Time)" ,
+        "EndTime": "Tue Nov 07 2023 19:11:49 GMT+0100 (Central European Standard Time)",
+        "Description": "test"
+    },
+    {
+        "Id": 2,
+        "Subject": "Reading Time",
+        "StartTime": "Tue Nov 08 2023 12:11:49 GMT+0100 (Central European Standard Time)" ,
+        "EndTime": "Tue Nov 08 2023 13:11:49 GMT+0100 (Central European Standard Time)",
+        "Description": "test"
+    },
+    {
+        "Id": 3,
+        "Subject": "Animé time",
+        "StartTime": "Tue Nov 08 2023 15:11:49 GMT+0100 (Central European Standard Time)" ,
+        "EndTime": "Tue Nov 08 2023 17:11:49 GMT+0100 (Central European Standard Time)",
+        "Description": "test"
+    }
+]
