@@ -2,6 +2,7 @@ import React from "react"
 import { useDispatch} from 'react-redux'
 import { setAevent } from "../../state/aEvent/aEventSlice"
 import {createEvent} from '../../functions/eventHelpers'
+import {FaRegCalendar,FaRegClock} from 'react-icons/fa6'
 
 export default function AddEvent ()  {
     const dispatch = useDispatch()
@@ -23,6 +24,15 @@ export default function AddEvent ()  {
         root?.style.setProperty("--form-color", color+"90");
     }
 
+    const test = (event)=>{
+        try {
+            createEvent(event,dispatch,setAevent)
+        } catch (error) {
+            console.log(error)
+        }
+        
+    }
+
     return(
         <div>
             <div className="addEvent">
@@ -32,16 +42,18 @@ export default function AddEvent ()  {
             <div className="addPopUp" style={{display: popUp === true ? "flex" : "none"}}>
                 <div className="blackBG" onClick={()=> setPopUp(!popUp)}></div>
                 <div className="popUpContent">
-                    <form onSubmit={(event)=> createEvent(event,dispatch,setAevent)}>
+                    <form onSubmit={(event)=> test(event)}cat>
                         <div>
                             <input type="text" placeholder="Add Title" name="title"/>
                             <input type="color" onChange={(e)=> formColorChange(e.target.value)} name="colorPicked"/>
                         </div>
                         <div>
+                            <FaRegCalendar size="30px" />
                             <input type="date" name="startDate"/>
                             <input type="date" name="endDate"/>
                         </div>
                         <div>
+                            <FaRegClock size="30px"/>
                             <input type="time" name="startTime"/>
                             <input type="time" name="endTime"/>
                         </div>

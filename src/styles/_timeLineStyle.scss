@@ -1,3 +1,26 @@
+.e-schedule{
+    border: none;
+    .e-schedule-table {
+        .e-time-cells{
+            padding: 20px;
+            border: none !important;
+        }
+    }
+    .e-schedule-table .e-content-table{
+        thead{
+            tr{
+                td{
+                    border-bottom:1px solid rgba(0, 0, 0, 0.12);
+                }
+            }
+        }
+        
+        td{
+            padding: 22px;
+        }
+    }
+}
+
 .e-appointment{
     background-color: transparent !important;
 
@@ -27,8 +50,6 @@
                     }
                 }
             }
-        }
-        
+        }   
     }
-    
 }

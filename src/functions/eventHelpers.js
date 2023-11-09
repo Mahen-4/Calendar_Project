@@ -10,7 +10,15 @@ export const createEvent = (event, dispatch, setAevent) => {
     const startTime = event.target.startTime.value
     const endTime = event.target.endTime.value
     const comment = event.target.comment.value
-
+    console.log(title)
+    if(!title || !colorPicked || !startDate || !endDate || !startTime || !endTime || !comment){
+        console.log("error") // POP UP 
+        return;
+    }
+    if(startDate > endDate){
+        console.log("error Date") // POP UP
+        return;          
+    }
     // Combine the start date and start time into a single string
     const dateTimeStart = startDate + "T" + startTime;
     // Create a Date object from the combined date and time string
@@ -53,8 +61,14 @@ export const createEvent = (event, dispatch, setAevent) => {
         localStorage.setItem("eventCALENDAR", JSON.stringify(allEventArray));
         // set aEvent global state to the new array of event
         dispatch(setAevent(allEventArray))
-    }
-    
+    }  
+}
 
-    
+export const deleteEvent = (id, dispatch, setAevent) =>{
+    const allEvent = localStorage.getItem("eventCALENDAR")
+    const allEventArray = JSON.parse(allEvent);
+    // filter array with all event having a different id than the id of the deleted one
+    const filteredArray = allEventArray.filter(event=> event.Id !== id)
+    localStorage.setItem("eventCALENDAR", JSON.stringify(filteredArray));
+    dispatch(setAevent(filteredArray))
 }
