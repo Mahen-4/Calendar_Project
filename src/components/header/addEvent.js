@@ -1,27 +1,26 @@
 import React from "react"
+import { useDispatch} from 'react-redux'
+import { setAevent } from "../../state/aEvent/aEventSlice"
+import {createEvent} from '../../functions/eventHelpers'
 
-export default function AddButton ()  {
+export default function AddEvent ()  {
+    const dispatch = useDispatch()
+
+    // get all event already on the localStorage and store it in the aEvent global state
+    React.useEffect(()=>{
+        if(Object.keys(localStorage).includes("eventCALENDAR")){
+            const allEvent = localStorage.getItem("eventCALENDAR")
+            const allEventArray = JSON.parse(allEvent);
+            dispatch(setAevent(allEventArray))
+        }
+    },[])
 
     const [popUp, setPopUp] = React.useState(false)
-    console.log(popUp)
 
     const formColorChange = (color)=>{
         const root = document.documentElement;
-        // css color variable affected to the color picked 
+        // css color variable affected to the color picked / root? check if root is defined
         root?.style.setProperty("--form-color", color+"90");
-    }
-
-    const createEvent = (event) => {
-        event.preventDefault()
-        // get all values of the form
-        const title = event.target.title.value
-        const colorPicked = event.target.colorPicked.value
-        const startDate = event.target.startDate.value
-        const endDate = event.target.endDate.value
-        const startTime = event.target.startTime.value
-        const endTime = event.target.endTime.value
-        const comment = event.target.comment.value
-        
     }
 
     return(
@@ -31,9 +30,9 @@ export default function AddButton ()  {
             </div>
 
             <div className="addPopUp" style={{display: popUp === true ? "flex" : "none"}}>
-                <div className="blackBG"></div>
+                <div className="blackBG" onClick={()=> setPopUp(!popUp)}></div>
                 <div className="popUpContent">
-                    <form onSubmit={createEvent}>
+                    <form onSubmit={(event)=> createEvent(event,dispatch,setAevent)}>
                         <div>
                             <input type="text" placeholder="Add Title" name="title"/>
                             <input type="color" onChange={(e)=> formColorChange(e.target.value)} name="colorPicked"/>

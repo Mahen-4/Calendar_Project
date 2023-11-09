@@ -1,26 +1,28 @@
 import React from 'react'
 import Calendar from 'react-calendar'
-import TimeLine from './timeLine'
-import Header from './header/header'
+import { useSelector } from 'react-redux/es/hooks/useSelector'
+import { useDispatch } from 'react-redux'
+import { setSelectedDay } from '../state/selectedDay/selectedDaySlice'
+
 
 export default function CalendarComponent()  {
 
-    const [date, setDate] = React.useState(new Date())
+    //get selectedDay value from the store
+    const selectedDay = useSelector((state)=> state.selectedDay.value)
+    const dispatch = useDispatch()
 
     const onDateChange = (value) => {
-        setDate(value)
+        //Convert the Date (value)  into a serializable format, here ISO string 
+        // serializable -> meaning it can be easily converted to a JSON format.
+        const timestamp = value.toISOString();
+        // set the selectedDay to the value converted
+        dispatch(setSelectedDay(timestamp))
     }
 
     
 
     return(
-        <div className='container'>
-            <Header />
-            <TimeLine selectedDay={date}/>
-            <Calendar 
-            onChange={onDateChange} 
-            value={date} 
-            />
-        </div>
+        //calendar component
+        <Calendar onClickDay={onDateChange} value={selectedDay} />
     )
 }

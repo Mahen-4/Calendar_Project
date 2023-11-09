@@ -1,11 +1,15 @@
 import React from "react"
-import AddButton from "./addButton"
+import AddEvent from "./addEvent"
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export default function Header ()  {
 
-    const dateString = "Tue Nov 07 2023 12:11:49 GMT+0100 (Central European Standard Time)";
-    const date = new Date(dateString);
+    //get selectedDay value from the store
+    const selectedDay = useSelector((state)=> state.selectedDay.value)
+    // convert to a Date
+    const date = new Date(selectedDay);
     
+    // formating the date to "Month Day"
     const options = {month: 'long', day: 'numeric' };
     const formattedDate = date.toLocaleDateString('en-US', options);
 
@@ -13,7 +17,7 @@ export default function Header ()  {
     return(
         <div className="header">
             <h1>{formattedDate}</h1>
-            <AddButton />
+            <AddEvent />
         </div>
     )
 }

@@ -5,16 +5,27 @@
         height: 100%;
         div{
             height: 100%;
-            .eventTemplate{
+            .eventTemplate{         
                 color: black;
-                background-color: rgba(255, 0, 0, 0.364);
                 margin-left: 0.5%;
                 padding-left: 5%;
-                width: 100%;
+                padding-right: 5%;
+                width: 94%;
                 font-size: 20px;
                 display: flex;
-                justify-content: left;
+                justify-content: space-between;
                 align-items: center;
+                button{
+                    border: none;
+                    background-color: $greyBackground;
+                    color: white;
+                    padding: 5px;
+                    transition: .3s;
+                    &:hover{
+                        background-color: $font_grey_color;
+                        cursor: pointer;
+                    }
+                }
             }
         }
         

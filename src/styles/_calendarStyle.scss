@@ -1,4 +1,4 @@
-$font_grey_color: #9d9ea7;
+
 
 .react-calendar{
     width: 25%;
@@ -6,7 +6,7 @@ $font_grey_color: #9d9ea7;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #5c5f6d;
+    background-color: $greyBackground;
 
     button{
         border: none;
