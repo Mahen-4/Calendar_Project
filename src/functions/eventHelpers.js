@@ -11,7 +11,7 @@ export const createEvent = (event, dispatch, setAevent,notify) => {
     const endTime = event.target.endTime.value
     const comment = event.target.comment.value
     console.log(title)
-    if(!title || !colorPicked || !startDate || !endDate || !startTime || !endTime || !comment){
+    if(!title || !colorPicked || !startDate || !endDate || !startTime || !endTime ){
         console.log("error") 
         notify("err")
         return;
