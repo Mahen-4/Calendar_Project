@@ -63,9 +63,25 @@
                     }
                 }
             }
-        }
-        
+        }    
     }
-
-    
 }
+
+// MOBILE
+@media only screen and (max-width: $mobile-breakpoint) {
+    .react-calendar{
+        width: 100%;
+        position: absolute;
+        top: 15%;
+        left: 0;
+        z-index: 2;
+        display: var(--onScreen);
+    }
+}
+
+// TABLET 
+@media screen and (max-width: $desktop-breakpoint  ) and (min-width:$tablet-breakpoint ) {
+    .react-calendar{
+        width: 35%;
+    }
+  }

@@ -5,6 +5,7 @@ import React from 'react';
 import { deleteEvent } from '../functions/eventHelpers';
 import { useDispatch } from 'react-redux';
 import { setAevent } from '../state/aEvent/aEventSlice';
+import {FaXmark} from "react-icons/fa6"
 
 export default function TimeLine(){
 
@@ -17,10 +18,13 @@ export default function TimeLine(){
     //event design / structure 
     function eventTemplate(value) {
         return(
-            <div className='eventTemplate' style={{backgroundColor: value.ColorPicked+"90"}}>
-                <p>{value.Subject}</p>
-                <button onClick={()=>deleteEvent(value.Id, dispatch, setAevent)}>Delete</button>
+            <div className='eventTemplate' style={{backgroundColor: value.ColorPicked+"95"}}>
+                <div>
+                    <h3>{value.Subject}</h3>
+                    <p>{value.Description}</p>
                 </div>
+                <button onClick={()=>deleteEvent(value.Id, dispatch, setAevent)}><FaXmark size={"15px"}/></button>
+            </div>
         )
     }
 
@@ -41,6 +45,7 @@ export default function TimeLine(){
             timeScale={timeScale}
             timeFormat="HH:mm"
             workHours={{highlight: true, end: '21:00'}}
+            showTimeIndicator= {false}
             eventSettings={{
                 dataSource: aEvent,
                 allowInline: false, /* Disable the event popup*/

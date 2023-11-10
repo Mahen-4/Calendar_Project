@@ -71,6 +71,12 @@ export const deleteEvent = (id, dispatch, setAevent) =>{
     const allEventArray = JSON.parse(allEvent);
     // filter array with all event having a different id than the id of the deleted one
     const filteredArray = allEventArray.filter(event=> event.Id !== id)
+
+    // update ID's of each element of the array
+    filteredArray.forEach(element => {
+        element.Id = element.Id - 1
+    });
+    
     localStorage.setItem("eventCALENDAR", JSON.stringify(filteredArray));
     dispatch(setAevent(filteredArray))
     

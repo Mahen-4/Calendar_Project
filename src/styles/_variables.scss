@@ -1,3 +1,10 @@
 $buttonBackground: #3c82f9;
 $greyBackground: #5c5f6d;
 $font_grey_color: #9d9ea7;
+$mobile-breakpoint: 767px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1024px;
+:root {
+    --form-color: #7373da;
+    --onScreen: none;
+}

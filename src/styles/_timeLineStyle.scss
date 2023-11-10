@@ -7,14 +7,11 @@
         }
     }
     .e-schedule-table .e-content-table{
-        thead{
-            tr{
-                td{
-                    border-bottom:1px solid rgba(0, 0, 0, 0.12);
-                }
-            }
-        }
-        
+        thead{    
+            td{
+                border-bottom:1px solid rgba(0, 0, 0, 0.12);
+            }   
+        }     
         td{
             padding: 22px;
         }
@@ -23,14 +20,13 @@
 
 .e-appointment{
     background-color: transparent !important;
-
+    z-index: 2;
     .e-appointment-details{
         height: 100%;
         div{
             height: 100%;
             .eventTemplate{         
                 color: black;
-                margin-left: 0.5%;
                 padding-left: 5%;
                 padding-right: 5%;
                 width: 94%;
@@ -38,11 +34,33 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                &::after{
+                    content: '';
+                    height: 100%;
+                    width: 5px;
+                    position: absolute;
+                    left: 0;
+                    background-color: $greyBackground;
+                }
+                div{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    h3{
+                        margin: 0;
+                        font-weight: 500;
+                    }
+                    p{
+                        font-size: 15px;
+                        color: $greyBackground;   
+                        margin: 0;
+                    }
+                }
                 button{
                     border: none;
                     background-color: $greyBackground;
                     color: white;
-                    padding: 5px;
+                    padding: 3px 5px;
                     transition: .3s;
                     &:hover{
                         background-color: $font_grey_color;
@@ -52,4 +70,18 @@
             }
         }   
     }
+}
+@media only screen and (max-width: $mobile-breakpoint) {
+    .e-control{
+        width: 100% !important;          
+    }
+    .e-schedule .e-schedule-table .e-time-cells {   
+        padding: 17px 0px;
+    } 
+    .e-schedule .e-vertical-view .e-time-cells-wrap table td, .e-schedule .e-vertical-view .e-work-cells{
+        text-align: left;
+    }   
+    .e-schedule .e-schedule-table .e-content-table td{
+        padding: 19px;
+    } 
 }

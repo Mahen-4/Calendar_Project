@@ -1,6 +1,4 @@
-:root {
-    --form-color: #7373da;
-}
+
 .addEvent{
     button{
         background-color: $buttonBackground;
@@ -25,7 +23,7 @@
     justify-content: center;
     align-items: center;
     .blackBG{
-        z-index: 2;
+        z-index: 3;
         width: 100%;
         height: 100vh;
         position: absolute;
@@ -74,6 +72,20 @@
                     color: white;
                     cursor: pointer;
                 }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $mobile-breakpoint) {
+    .addPopUp{
+        .blackBG{
+            height: 125vh;
+        }
+        .popUpContent{
+            width: 95%;
+            input{
+                font-size: 10px;
             }
         }
     }
