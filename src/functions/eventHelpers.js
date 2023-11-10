@@ -1,6 +1,6 @@
 
 
-export const createEvent = (event, dispatch, setAevent) => {
+export const createEvent = (event, dispatch, setAevent,notify) => {
     event.preventDefault()
     // get all values of the form
     const title = event.target.title.value
@@ -12,11 +12,12 @@ export const createEvent = (event, dispatch, setAevent) => {
     const comment = event.target.comment.value
     console.log(title)
     if(!title || !colorPicked || !startDate || !endDate || !startTime || !endTime || !comment){
-        console.log("error") // POP UP 
+        console.log("error") 
+        notify("err")
         return;
     }
     if(startDate > endDate){
-        console.log("error Date") // POP UP
+        notify("err") 
         return;          
     }
     // Combine the start date and start time into a single string
@@ -62,6 +63,7 @@ export const createEvent = (event, dispatch, setAevent) => {
         // set aEvent global state to the new array of event
         dispatch(setAevent(allEventArray))
     }  
+    notify("success")
 }
 
 export const deleteEvent = (id, dispatch, setAevent) =>{
@@ -71,4 +73,5 @@ export const deleteEvent = (id, dispatch, setAevent) =>{
     const filteredArray = allEventArray.filter(event=> event.Id !== id)
     localStorage.setItem("eventCALENDAR", JSON.stringify(filteredArray));
     dispatch(setAevent(filteredArray))
+    
 }

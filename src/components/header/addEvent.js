@@ -4,9 +4,14 @@ import { setAevent } from "../../state/aEvent/aEventSlice"
 import {createEvent} from '../../functions/eventHelpers'
 import {FaRegCalendar,FaRegClock} from 'react-icons/fa6'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function AddEvent ()  {
     const dispatch = useDispatch()
-
+    const notify =  (val)=>{
+        val === "err" ? toast.error("Form error ") : toast.success("Event added")
+    }
     // get all event already on the localStorage and store it in the aEvent global state
     React.useEffect(()=>{
         if(Object.keys(localStorage).includes("eventCALENDAR")){
@@ -24,9 +29,9 @@ export default function AddEvent ()  {
         root?.style.setProperty("--form-color", color+"90");
     }
 
-    const test = (event)=>{
+    const createEventTry = (event)=>{
         try {
-            createEvent(event,dispatch,setAevent)
+            createEvent(event,dispatch,setAevent,notify)
         } catch (error) {
             console.log(error)
         }
@@ -42,7 +47,7 @@ export default function AddEvent ()  {
             <div className="addPopUp" style={{display: popUp === true ? "flex" : "none"}}>
                 <div className="blackBG" onClick={()=> setPopUp(!popUp)}></div>
                 <div className="popUpContent">
-                    <form onSubmit={(event)=> test(event)}cat>
+                    <form onSubmit={(event)=> createEventTry(event)}cat>
                         <div>
                             <input type="text" placeholder="Add Title" name="title"/>
                             <input type="color" onChange={(e)=> formColorChange(e.target.value)} name="colorPicked"/>
@@ -62,6 +67,7 @@ export default function AddEvent ()  {
                     </form>
                 </div>
             </div>
+            <ToastContainer position="bottom-center" />
         </div>
     )
 }
