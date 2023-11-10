@@ -30,7 +30,6 @@ export default function AddEvent ()  {
     }
 
     const createEventTry = (event)=>{
-        console.log("submitted")
         try {
             createEvent(event,dispatch,setAevent,notify)
         } catch (error) {
